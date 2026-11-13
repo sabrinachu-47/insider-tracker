@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: insider-tracker
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python insider_tracker.py
+    healthCheckPath: /
+    envVars:
+      - key: SEC_USER_AGENT
+        sync: false   # Render asks you for this when you deploy, e.g. "Insider Tracker you@gmail.com"
+      - key: PYTHON_VERSION
+        value: 3.12.7
